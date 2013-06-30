@@ -24,20 +24,27 @@ birdList = [
 
 
 def downloadBirdCalls(stub, bird,path):
-    print 30*"$"
-    print path
+    print "#"30
+    print "DOWNLOADING {0} to {1}".format(bird,path)
     os.chdir(path)
-    url = stub+bird
-    url = urllib2.urlopen(url)
-    content = url.read()
-    soup = BeautifulSoup(content)
-    found = soup.findAll("div", {"class": "xc-button-audio"})
-    for foundSound in found:
-        soundUrl = [f[1] for f in foundSound.attrs if f[0]==u'data-xc-filepath']
-        grabThis = "wget "
-        grabThis = grabThis + soundUrl[0]
-        print soundUrl[0]
-        #os.system(grabThis)
+    n = 1
+    page = '&pg='
+    foundStuff = True
+    while foundStuff:
+        print "DOING PAGE {0}".format(n)
+        url = stub+bird+page+str(n)
+        n = n + 1
+        url = urllib2.urlopen(url)
+        content = url.read()
+        soup = BeautifulSoup(content)
+        found = soup.findAll("div", {"class": "xc-button-audio"})
+        if( len(found) < 1 ):
+            foundStuff = False
+        for foundSound in found:
+            soundUrl = [f[1] for f in foundSound.attrs if f[0]==u'data-xc-filepath']
+            grabThis = "wget "
+            grabThis = grabThis + soundUrl[0]
+            os.system(grabThis)
 
 
 
