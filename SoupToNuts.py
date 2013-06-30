@@ -24,7 +24,7 @@ birdList = [
 
 
 def downloadBirdCalls(stub, bird,path):
-    print "#"30
+    print "#"*30
     print "DOWNLOADING {0} to {1}".format(bird,path)
     os.chdir(path)
     n = 1
