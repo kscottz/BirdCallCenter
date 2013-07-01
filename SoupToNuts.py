@@ -10,7 +10,7 @@ birdList = [
     'Zenaida+macroura', #morning dove
     'Turdus+migratorius',#robin
     'Carduelis+tristis', #gold finch
-    'Passexu+domesticus', #house sparrow
+    'Passer+domesticus', #house sparrow
     'Quiscalus+quiscula', #common grackle
     'Archilochus+colubris', #ruby throated humming bird
     'Picoides+pubescens', # downy wood pecker
