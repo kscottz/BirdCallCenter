@@ -15,7 +15,7 @@ def openMp3(fname):
     data = wav.read(oname)
     return data
 
-def plotSplitting(data,wndw=0.1,threshold=10000):
+def plotSplitting(data,wndw=0.2,threshold=5000):
     if len(data[1].shape) == 1:
         signal = data[1]
     else:
@@ -40,7 +40,7 @@ def plotSplitting(data,wndw=0.1,threshold=10000):
             plt.axvline(t, color='red', lw=2, alpha=0.5)
     plt.show()
 
-def findIntervals(data,wndw=0.1,threshold=10000,pad=3):
+def findIntervals(data,wndw=0.2,threshold=5000,pad=3):
     if len(data[1].shape) == 1:
         signal = data[1]
     else:
@@ -83,8 +83,9 @@ for fname in os.listdir(path):
         signal = data[1][:,0]
 
     for interval in intervals:
-        plt.plot(signal[interval[0]:interval[1]])
-        plt.show()
+        #plt.plot(signal[interval[0]:interval[1]])
+        #plt.show()
         ofile = 'output{0}.wav'.format(count)
+        print 'saving '+ofile
         count+=1
         wav.write(ofile,data[0],signal[interval[0]:interval[1]])
